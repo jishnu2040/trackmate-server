@@ -2,7 +2,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserRegisterSerializer
+from .serializers import UserRegisterSerializer, LoginSerializer
 
 class RegisterUserView(APIView):
     def post(self, request):
@@ -10,4 +10,12 @@ class RegisterUserView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class LoginUserView(APIView):
+    def post(self, request):  # Fixed the typo here
+        serializer = LoginSerializer(data=request.data)  # Fixed the typo here
+        if serializer.is_valid():
+            token_data = serializer.save()
+            return Response(token_data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
