@@ -76,10 +76,17 @@ WSGI_APPLICATION = 'trackmate_api.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db() 
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'task_db',
+        'USER': 'myuser',
+        'PASSWORD': 'task@2040',
+        'HOST': 'localhost',  # Set to your PostgreSQL server address
+        'PORT': '5432',       # Default PostgreSQL port
+    }
 }
 
-
+AUTH_USER_MODEL= "accounts.User"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
