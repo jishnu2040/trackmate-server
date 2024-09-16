@@ -48,6 +48,8 @@ class TaskListCreateView(generics.ListCreateAPIView):
 logger = logging.getLogger(__name__)
 
 class TaskDetailUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes =[AllowAny]
+    
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]

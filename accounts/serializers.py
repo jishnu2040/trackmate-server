@@ -32,6 +32,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
@@ -39,18 +40,24 @@ class LoginSerializer(serializers.Serializer):
     def validate(self, attrs):
         username = attrs.get('username')
         password = attrs.get('password')
-        print(username)
-        print(password)
 
         if not username or not password:
             raise serializers.ValidationError('Both username and password are required')
 
         user = authenticate(username=username, password=password)
-        print(user) 
-        
+
         if not user:
             raise serializers.ValidationError('Invalid username or password')
 
-        token = user.token()  # Assuming `token` method is used to get JWT tokens
-        
-        return {'token': token}
+        # Assuming `token` method is used to get JWT tokens
+        token = user.token()  # Ensure this method returns a valid token
+
+        print("toooookan",token)
+
+        # Return token and user info in validated data
+        return {
+            'token': token,
+            'username': user.username,
+            'email': user.email,
+            'id': user.id
+        }

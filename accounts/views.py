@@ -21,6 +21,16 @@ class LoginUserView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
+            # Extract the data from validated data
             token_data = serializer.validated_data['token']
-            return Response(token_data, status=status.HTTP_200_OK)
+            response_data = {
+                'access': token_data['access'],
+                'refresh': token_data['refresh'],
+                'username': serializer.validated_data['username'],
+                'email': serializer.validated_data['email'],
+                'id': serializer.validated_data['id']
+            }
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -55,6 +55,22 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Add the origin of your frontend app
 ]
+from corsheaders.defaults import default_headers
+
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'content-type',
+]
+
+# Optional: Allow specific methods
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
 
 # settings.py
 AUTHENTICATION_BACKENDS = [
