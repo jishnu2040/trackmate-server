@@ -68,16 +68,6 @@ class TaskStatusFilterView(generics.ListAPIView):
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
     
-
-
-
-
-
     
 
-# URL patterns would look like this:
-# urlpatterns = [
-#     path('tasks/', views.TaskListCreateView.as_view(), name='task-list'),
-#     path('tasks/<int:pk>/', views.TaskDetailUpdateDeleteView.as_view(), name='task-detail'),
-#     path('tasks/status/', views.TaskStatusFilterView.as_view(), name='task-status-filter'),
-# ]
+
