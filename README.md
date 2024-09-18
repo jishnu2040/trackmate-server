@@ -18,6 +18,14 @@ Clone the project
 ```bash
   https://github.com/jishnu2040/trackmate-server.git
 ```
+Change directory
+```bash
+  cd trackmate-server
+```
+Activate environment
+```bash
+  env\Scripts\Activate
+```
 Install dependencies
 ```bash
   pip install requirements.txt
