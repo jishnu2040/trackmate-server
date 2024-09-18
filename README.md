@@ -6,14 +6,15 @@ The Task Manager Application is designed to help users manage tasks effectively.
 
 ## Features
 
--Task Management with CRUD functionality
--JWT Authentication (including token blacklisting)
--Responsive UI for all screen sizes
--Light/Dark Mode toggle
--Custom User Model implementation
--Pagination for task lists
--HTTP request handling with Axios interceptors
--Global Access Control (using authentication and permission classes)
+- Task Management with CRUD functionality
+- JWT Authentication (including token blacklisting)
+- Responsive UI for all screen sizes
+- Light/Dark Mode toggle
+- Custom User Model implementation
+- Pagination for task lists
+- HTTP request handling with Axios interceptors
+- Global Access Control (using authentication and permission classes)
+
 
 
 Installation - Run Locally
